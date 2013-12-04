@@ -93,7 +93,7 @@ Puppet::Type.type(:dns_record).provide(:nsupdate) do
       output = dig('+short', resource[:mname]).chomp
     end
 
-    if output == resource[:address]
+    if output.include? resource[:address]
       true
     else
       false
